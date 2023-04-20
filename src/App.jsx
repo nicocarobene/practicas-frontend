@@ -2,31 +2,31 @@ import './App.css'
 import result from './mocks/result.json'
 import nonresult from './mocks/nonresult.json'
 import RenderMovies from './component/Movies'
+import useForm from './hook/useForm'
 
 function App () {
-  const movies = result.Search
-  const hasMovie = movies?.length > 0
+  const{ error, updateSearch} = useForm()
+  const{mappedMovies} =RenderMovies({search})
   const handleSubmit = (e) => {
     e.preventDefault()
-    const fields = new window.FormData(e.target)
-    const query = fields.get('query')
-    return query
-      ? console.log({ query })
-      : null
+  }
+  const handleChange=(e)=>{
+    updateSearch(e.target.value)
   }
 
   return (
     <div className="page">
       <header>
         <form className='searchMovie' onSubmit={handleSubmit}>
-          <input name='query' type='text' placeholder='Avengers, Star Wars, The Matrix'/>
+          <input name='query' onChange={handleChange} type='text' placeholder='Avengers, Star Wars, The Matrix'/>
           <button type='submit'>Search</button>
         </form>
+      {error && <p style={{color: 'red'}}>{error}</p>}
       </header>
       <main>
         {
-          hasMovie
-            ? RenderMovies({ movies })
+          mappedMovies
+            ? mappedMovies
             : <h2>{ nonresult.Error }</h2>
         }
       </main>
