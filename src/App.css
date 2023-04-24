@@ -884,11 +884,10 @@ body > footer {
     text-decoration: underline;
   }
 }
-.Page{
+.page{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  place-items: center;
 }
 .searchMovie{
   display: flex;

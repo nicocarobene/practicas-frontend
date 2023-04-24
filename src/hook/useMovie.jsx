@@ -1,26 +1,30 @@
-import { useState } from "react"
-import result from './mocks/result.json'
-import nonresult from './mocks/nonresult.json'
+import { useCallback, useMemo, useRef, useState } from 'react'
+import { getMovie } from '../services/getMovies'
 
-export default function useMovie ({search}) {
-  const { responseMovie, setResponseMovie }= useState([])
-  
-  const result = result.Search
-  const hasMovie = movies?.length > 0
-  const mappedMovies = movies?.map(pelis => ({
-    id: pelis.imdbID,
-    title: pelis.Title,
-    year: pelis.Year,
-    poster: pelis.Poster
-  }))
+export default function useMovie ({ search, sort }) {
+  const [responseMovie, setResponseMovie] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [errorSearch, setError] = useState(null)
+  const prevSearch = useRef(search)
 
-  const getMovie=()=>{
-    if(search){
-      setResponseMovie(result)
-    }
-    else{
-      setResponseMovie(nonresult)
-    }
-  }
-  return { mappedMovies }
+  const searchMovie = useCallback(({ search }) => {
+    if (search === prevSearch.current) return
+    setLoading(true)
+    setError(null)
+    prevSearch.current = search
+    getMovie({ search })
+      .then(res => {
+        setResponseMovie(res)
+        setLoading(false)
+      })
+      .catch(e => setError(e.message))
+  }, [])
+
+  const sortMovie = useMemo(() => {
+    return sort
+      ? [...responseMovie].sort((a, b) => a.title.localeCompare(b.title))
+      : responseMovie
+  }, [responseMovie, sort])
+
+  return { mappedMovies: sortMovie, searchMovie, loading, errorSearch }
 }

@@ -37,7 +37,7 @@
     },
     {
     "Title": "The Avengers: Earth's Mightiest Heroes",
-    "Year": "2010–2012",
+    "Year": "2010-2012",
     "imdbID": "tt1626038",
     "Type": "series",
     "Poster": "https://m.media-amazon.com/images/M/MV5BYzA4ZjVhYzctZmI0NC00ZmIxLWFmYTgtOGIxMDYxODhmMGQ2XkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg"
@@ -58,14 +58,14 @@
     },
     {
     "Title": "The Avengers",
-    "Year": "1961–1969",
+    "Year": "1961-1969",
     "imdbID": "tt0054518",
     "Type": "series",
     "Poster": "https://m.media-amazon.com/images/M/MV5BZWQwZTdjMDUtNTY1YS00MDI0LWFkNjYtZDA4MDdmZjdlMDRlXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg"
     },
     {
     "Title": "Avengers Assemble",
-    "Year": "2012–2019",
+    "Year": "2012-2019",
     "imdbID": "tt2455546",
     "Type": "series",
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTY0NTUyMDQwOV5BMl5BanBnXkFtZTgwNjAwMTA0MDE@._V1_SX300.jpg"
@@ -73,4 +73,4 @@
     ],
     "totalResults": "145",
     "Response": "True"
-    }
+}
