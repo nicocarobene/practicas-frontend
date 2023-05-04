@@ -5,6 +5,7 @@ import useForm from './hook/useForm'
 import useMovie from './hook/useMovie'
 import debounce from 'just-debounce-it'
 
+
 function App () {
   const [sort, setSort] = useState(false)
   const { error, updateSearch, search } = useForm()
